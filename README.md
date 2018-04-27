@@ -14,9 +14,9 @@ python3.5 postprocess.py --samples 3 --maxids 8 out.txt results/
 
 ### Parameters
 
-High `temperature` (> 1.0) - lots of random noise, most samples will be syntactically incorrect. Low `temperature` (<< 1.0) - little noise, most samples will be syntactically correct.
+High `temperature` (≫ 1.0) - lots of random noise, most samples will be syntactically incorrect. Low `temperature` (≈ 0.0) - little noise, most samples will be syntactically correct. 
 
-Keep `predict_len` within 300-3000. If you want only very short snippets, set it low (<150). 
+Keep `predict_len` within 300-3000. If you want only very short snippets, set it low (80-150). 
 
 `count` is the number of `predict_len`-long chunks to generate, controls the amount of data that will be generated.
 
