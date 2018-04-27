@@ -8,8 +8,8 @@ pip3 install torch numpy
 
 ## Running
 ```
-python3.5 -u generate.py --temperature 1.0 --count 30 --predict_len 3000 > out.txt
-python3.5 postprocess.py --samples 3 --maxids 8 out.txt results/
+python3 -u generate.py --temperature 1.0 --count 30 --predict_len 3000 > out.txt
+python3 postprocess.py --samples 3 --maxids 8 out.txt results/
 ```
 
 ### Parameters
