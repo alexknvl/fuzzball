@@ -16,7 +16,7 @@ python3.5 postprocess.py --samples 3 --maxids 8 out.txt results/
 
 ## Testing on dotty
 
-Add new test to `CompilationTests`:
+Add a new test to `CompilationTests` containing:
 ```scala
 compileFilesInDir("path/to/the/output/files", defaultOptions)
 ```
