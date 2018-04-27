@@ -41,7 +41,7 @@ final def i2: Int => Any = I1
 }
 }
 ```
-Note that not all snippets will properly parse, and the vast majority of them won't typecheck.
+Note that not all snippets will properly parse, and the vast majority of them won't typecheck. It will generate a limited subset of Scala (roughly Scala2 with some Dotty-specific keywords here and there).
 
 ## Testing on dotty
 
