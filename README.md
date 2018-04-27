@@ -9,7 +9,7 @@ pip3 install torch torchvision numpy tqdm argparse
 ## Running
 ```
 python3.5 -u ./generate.py --temperature 1.0 --count 30 --predict_len 3000 train.txt > out.txt
-python3.5 postprocess.py out.txt results/
+python3.5 postprocess.py --samples 8 --maxids 8 out.txt results/
 ```
 
 ## Credits
