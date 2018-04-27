@@ -1,6 +1,8 @@
 # fuzzball
 Scala fuzzer
 
+Code is probably slower and uglier than it needs be. Such is life.
+
 ## Installing
 ```
 pip3 install torch torchvision numpy tqdm argparse
