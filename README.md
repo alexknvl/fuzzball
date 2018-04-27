@@ -3,7 +3,7 @@ Scala fuzzer. [~44 bugs found in Dotty](https://github.com/lampepfl/dotty/issues
 
 ## Installing
 ```
-pip3 install torch numpy tqdm
+pip3 install torch numpy
 ```
 
 ## Running
