@@ -1,7 +1,7 @@
 # fuzzball
 Scala fuzzer. [~50 bugs found in Dotty](https://github.com/lampepfl/dotty/issues/4389).
 
-> Code is probably slower and uglier than it needs be. Such is life.
+> Code is slower and uglier than it needs be. Such is life.
 
 ## Installing
 ```
