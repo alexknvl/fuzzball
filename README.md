@@ -1,5 +1,5 @@
 # fuzzball
-Scala fuzzer. [~44 bugs found in Dotty](https://github.com/lampepfl/dotty/issues/4389) so far. Powered by a two-layer LSTM (400 units) network trained only for a couple hours.
+Scala fuzzer. [~44 bugs found in Dotty](https://github.com/lampepfl/dotty/issues/4389) so far and [many more are still unreported](https://github.com/alexknvl/dotty-fuzzing-results). Powered by a two-layer LSTM (400 units) network trained only for a couple hours.
 
 ## Installing
 ```
