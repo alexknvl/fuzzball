@@ -77,6 +77,7 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument('filename', type=str)
     argparser.add_argument('outdir', type=str)
+    argparser.add_argument('-q', '--squash', type=str)
     argparser.add_argument('-m', '--maxids', type=int, default=8)
     argparser.add_argument('-s', '--samples', type=int, default=8)
     args = argparser.parse_args()
@@ -84,9 +85,13 @@ if __name__ == '__main__':
     mkdir_p(args.outdir)
 
     seen = set()
+    file_count = 0
+    dir_count = 1
 
     for i, chunk in enumerate(open(args.filename, 'rt').read().split('\1')):
         chunk = chunk.strip()
+        if chunk == '':
+            continue
 
         for chunk in fixidentifiers(chunk, args.maxids, args.samples):
             name = hashlib.sha1(chunk.encode('utf-8')).hexdigest()
@@ -95,6 +100,28 @@ if __name__ == '__main__':
                 continue
             seen.add(name)
 
-            outfn = os.path.join(args.outdir, '%s.scala' % name)
+            if (file_count + 1) % 50000 == 0:
+                olddir = os.path.join(args.outdir, str(dir_count))
+                if os.path.exists(olddir) and args.squash is not None:
+                    os.system("mksquashfs %s %s -keep-as-directory -no-duplicates" % (olddir, args.squash))
+                    for f in os.listdir(olddir):
+                        os.remove(os.path.join(olddir, f))
+                    os.rmdir(olddir)
+
+                dir_count += 1
+                file_count = 0
+
+            outdn = os.path.join(args.outdir, str(dir_count))
+            if not os.path.exists(outdn):
+                os.mkdir(outdn)
+            outfn = os.path.join(outdn, '%s.scala' % name)
             with open(outfn, 'wt+') as f:
                 f.write(chunk)
+            file_count += 1
+
+    olddir = os.path.join(args.outdir, str(dir_count))
+    if os.path.exists(olddir) and args.squash is not None:
+        print(os.popen("mksquashfs %s sources -keep-as-directory" % (olddir, args.squash)).read())
+        for f in os.listdir(olddir):
+            os.remove(os.path.join(olddir, f))
+        os.rmdir(olddir)
